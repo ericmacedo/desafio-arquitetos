@@ -1,0 +1,18 @@
+{
+  "name": "desafio-mesha",
+  "version": "0.1.0",
+  "author": "Eric Macedo Cabral",
+  "private": true,
+  "workspaces": [ 
+    "api/",
+    "client/"
+  ],
+  "devDependencies": {
+    "turbo": "^1.9.8"
+  },
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "start": "node api/dist/src/main"
+  }
+}
