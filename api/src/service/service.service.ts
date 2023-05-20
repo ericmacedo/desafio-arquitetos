@@ -14,8 +14,10 @@ export class ServiceService {
     return this.serviceRepository.save(createServiceDto);
   }
 
-  findAll() {
-    return this.serviceRepository.find();
+  findAll(query: any = {}) {
+    return Object.keys(query).length === 0
+      ? this.serviceRepository.find()
+      : this.serviceRepository.findBy(query);
   }
 
   findOne(id: number) {

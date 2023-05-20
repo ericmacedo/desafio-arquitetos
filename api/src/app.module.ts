@@ -7,6 +7,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { ServiceModule } from './service/service.module';
 import { dataSourceOptions } from 'db/data-source';
+import { UserService } from './user/user.service';
+import { User } from './user/entities/user.entity';
 
 const clientResources = ServeStaticModule.forRoot({
   rootPath: join(__dirname, '../../..', 'user', 'dist')
@@ -16,7 +18,10 @@ const dbModule = TypeOrmModule.forRoot(dataSourceOptions);
 
 @Module({
   imports: [
-    clientResources, dbModule, UserModule, ServiceModule],
+    clientResources,
+    dbModule,
+    UserModule,
+    ServiceModule],
   controllers: [AppController],
   providers: [AppService]})
 export class AppModule {}
