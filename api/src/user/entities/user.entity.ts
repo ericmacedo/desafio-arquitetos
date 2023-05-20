@@ -17,10 +17,13 @@ export class User {
     id: number
 
 	@Column({ type: 'varchar', length: 300, nullable: false })
-  	name: string;
+	name: string;
 
   	@Column({ type: 'varchar', length: 300, nullable: false })
-  	email: string;
+	email: string;
+	
+	@Column({ type: 'varchar', length: 300, nullable: false })
+	password: string;
 	
 	@Column({ type: 'varchar', length: 300, nullable: false })
 	phone: string;

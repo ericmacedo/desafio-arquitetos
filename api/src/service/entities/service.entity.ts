@@ -1,5 +1,5 @@
 import { User } from 'src/user/entities/user.entity';
-import { Entity, Column, PrimaryGeneratedColumn, OneToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToOne, ManyToOne, JoinColumn } from 'typeorm';
 
 export enum ServiceStatus {
 	REQUESTED = 'Solicitado',
@@ -15,11 +15,13 @@ export class Service {
 	@Column({ type: 'varchar', length: 300, nullable: false })
 	description: string;
 
-	@OneToOne(() => User, user => user.id)
-	user: User;
+	@ManyToOne(() => User, user => user.id,)
+	@JoinColumn({ name: "client" })
+	client: User;
 
-	@OneToOne(() => User, user => user.id)
-	architect: User;
+	@ManyToOne(() => User, user => user.id)
+	@JoinColumn({ name: "employee" })
+	employee: User;
 
 	@Column({
 		type: 'enum',
